@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            font-family:Arial;
+            box-sizing:border-box;
+            border:dashed 1px red;
+        }
+        ul{
+            list-style:none;
+            display:flex;
+        }
+        h1{
+           text-align:center;
+           margin-top:100px;
+        }
+        li{
+            margin-left:20px;
+            background:gray;
+            color:#fff;
+        }
+        header{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-between;
+            padding:20px;
+            align-items:center;
+        }
+
+        header > div{
+            border: solid 2px green;
+            padding: 10px;
+        }
+
+        .flexboxcontainer {
+            display:flex;
+            justify-content: space-between;
+            margin:10px;
+            flex-wrap:wrap;
+            max-width:1000px;
+            background:green;
+            margin: auto;
+        }
+
+        .flexboxcontainer > div{    /* O ">" faz a regra ser aplicada as divs que forem filhas imediadas de .flexboxcontainer*/
+                                     /*( e não divs que estiverem dentro destas divs)*/
+           flex:1 1 250px;
+           margin:20px;
+        }
+
+        .flexboxcontainer div img {
+                max-width: 100%; /*Máximo 100% do CONTAINER ( FICA RESPONSIVA)*/
+                min-width:100%;
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <a>Logo</a>
+        <nav>
+            <ul>
+                <li> sobre</li>
+                <li> empresa</li>
+                <li> login</li>
+            </ul>
+        </nav>
+       
+    </header>
+
+    <h1>Section flex box</h1>
+
+    <section class="flexboxcontainer">
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/fotohorizontal.jpeg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/fotohorizontal.jpeg" />
+            <p>vertical</p>
+        </div>
+
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/fotohorizontal.jpeg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/fotohorizontal.jpeg" />
+            <p>vertical</p>
+        </div>
+    </section>
+</body>
+</html>

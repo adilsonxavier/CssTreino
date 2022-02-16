@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        *{
+            padding:0px;
+            margin:0px;
+            font-family:Arial;
+            box-sizing:border-box;
+            border:dashed 1px red;
+        }
+        ul{
+            list-style:none;
+            display:flex;
+        }
+        h1{
+           text-align:center;
+           margin-top:100px;
+        }
+        li{
+            margin-left:20px;
+            background:gray;
+            color:#fff;
+        }
+        header{
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:space-between;
+            padding:20px;
+            align-items:center;
+        }
+
+        header > div{
+            border: solid 2px green;
+            padding: 10px;
+        }
+
+        .flexboxcontainer {
+            display:flex;
+            justify-content: space-between;
+            margin:10px;
+            flex-wrap:wrap;
+            max-width:800px;
+            background:green;
+            margin: auto;
+        }
+
+        .flexboxcontainer > div{    /* O ">" faz a regra ser aplicada as divs que forem filhas imediadas de .flexboxcontainer*/
+                                     /*( e não divs que estiverem dentro destas divs)*/
+           flex:1 1 200px;
+           margin:10px;
+        }
+
+        .flexboxcontainer div img {
+                max-width: 100%; /*Máximo 100% do CONTAINER ( FICA RESPONSIVA)*/
+                min-width:100%;
+            }
+        
+        /*  GRID*/
+
+        .gridcontainer{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            max-width:800px;
+            margin:0 auto;
+        }
+
+            .gridcontainer > div {
+                margin:10px;
+                border:solid 1px green;
+              
+            }
+
+            .gridcontainer > div:nth-child(n+4) /* a partir do 4° div ( começa a contar do 1 e não zero )*/
+            {
+                color:blue;
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 10px;  /*Distancia entre as 2 colunas do grid*/
+                align-items:center; /* alinha verticalmente ( funciona no display flex e grid*/
+            }
+
+        .gridcontainer > div img {
+            max-width: 100%; /*Máximo 100% do CONTAINER ( FICA RESPONSIVA)*/
+            min-width: 100%;
+        }
+
+                .gridcontainer > div.anuncio { /* Repare que este seletor o div.anuncio são grudados. Significa que a regra vale pro div filho 
+                                               imediato de gridcontainer que tenha a classe anuncio
+                                            Foi necessário fazer assim ao invéz de simplesmente .anuncio para poder usar o display:block 
+                                            abaixo pois a regra  .gridcontainer > div:nth-child(n+4) incluia a div anuncio
+                                            com isso evito usar  display: block !important; */
+               display: block;
+                grid-column: 1;
+                /*            Vai ficar na primeira coluna montada pela regra do container pai gridcontainer grid-template-columns: 1fr 1fr 1fr;
+            independente da ordem que ele está no html ( no caso o .anuncio é a última div mas vai ficar na primeira coluna )*/
+
+                    grid-row: 2/ 5;
+                    /*            Vai ficar tambem ocupando um espaço entre a linha 2 e 5 ( conta também as linhas imaginárias que ficam em cima e baixo de
+                .grid container)
+            Os outros divs que estavam divididos nas 3 colunas de .container, agora serão distribuidos nas 2 colunas que restaram*/
+                }
+
+      @media (max-width:600px){
+        .gridcontainer {
+            grid-template-columns: 1fr 1fr;
+         }
+
+            .gridcontainer > div:nth-child(n+4){
+                display:block;
+            }
+
+/*        com o display:block eu reseto o display:grid sem a media query então as propriedades ref. a grid que existiam (grid-template-columns e grid-gap)
+        também fica sem efeito*/
+
+            .gridcontainer > div.anuncio {
+                grid-column: auto;
+                grid-row: auto;
+                /* As 2 linhas acima resetam a prop.  grid-column: 1; e  grid-row: 2/ 5; */
+
+                order: -1; /* faz com que seja o primeiro item a ser mostrado ( embora no dom esteja como último)*/
+            }
+
+
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <a>Logo</a>
+        <nav>
+            <ul>
+                <li> sobre</li>
+                <li> empresa</li>
+                <li> login</li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <h1>Section flex box</h1>
+
+    <section class="flexboxcontainer">
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>vertical</p>
+        </div>
+
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>vertical</p>
+        </div>
+    </section>
+
+    <h1>Section Grid</h1>
+
+    <section class="gridcontainer">
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>vertical</p>
+        </div>
+
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>vertical</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>quadrada</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div>
+            <img src="img/img200.jpg" />
+            <p>horizontal</p>
+        </div>
+
+        <div class="anuncio">
+            <img src="img/img200.jpg" />
+            <p>anuncio</p>
+        </div>
+    </section>
+</body>
+</html>

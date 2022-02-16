@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .container {
+            box-sizing: border-box;
+            background-color: #dadada;
+            border: solid 2px red;
+            padding: 15px;
+            max-width: 1200px;
+            height: 300px;
+            /* Regras do Flex*/
+            display: flex; /*vale pros elementos filhos*/
+            /*flex-direction:column;*/
+            /*Alinhamento horizontal*/
+            justify-content: space-between;
+            /* justify-content:  É como os elementos filhos serão distribuidos dentro do pai. Não influencia nos conteúdos dos elementos filhos
+               center: no centro e grudados
+               space-around : espaço entre os elementos e entre a esquerda do primeiro e direita do último
+               space-between : espaço entre os elementos mas sem espaço a direita e esquerda (os elementos vão ocupar 100% do pai)
+           */
+
+
+            align-items: center; /*Alinhamento vertical*/
+
+            flex-wrap: wrap; /* Faz com que os elementos vão pra outra linha quando ocuparem o tamanho máximo do container*/
+            /* Sem ele os elementos ficam esprimidos e vão ficando cada vez menores */
+            /* O espaçamento entre os elementos não é distribuido proporcionalmente nas 2 linhas:
+                                A primeira vai usar a quantidade de elementos que der e ficam proporcionais e a segunda
+                                fica só com a quantidade de elementos que não coube na primeira, ficando também proporcionais
+                            */
+        }
+
+
+       .item {
+            display:inline;/*  com display:inline o width e height não funcionam*/
+              display:inline-block; /* com display:inline-block o width e height funcionam normalmente*/
+            background-color: #ccc;
+            border: solid 2px blue;
+            width: 50px; /*Se não tiver o width vai ocupar 100 por cento da tela por é esse o default de elemento de bloco como a div**/
+            
+            height: 50px;
+        }
+
+        .box {
+            background-color: #ccc;
+            border: solid 2px blue;
+            height: 50px;
+            /* flex-basis:200px;*/ /* IMPORTANTE : O flex-basis sobrescreve o width*/
+            width: 300px;
+           
+            /*Alinhamentos sem o elemento ser flex*/
+            text-align: center;  /* Não funciona com flex*/
+            line-height: 50px;  /*funciona com flex*/
+            
+            /*Alinhamentos sem o elemento ser flex*/
+            display:flex;
+            justify-content:center; /* alinha horizontal*/
+            align-items:center; /* alinha vertical */
+
+            /*IMPORTANTE: O justify-content e o align-item sobreescrevem o text-align e o line-height*/
+        }
+
+
+        /*#item1{
+            flex-grow:2;
+            order:3;
+    
+        }
+
+        #item2, #item3 {
+            flex-grow: 1;
+        }
+
+        #item2 {
+            flex-basis: 100px;*/ /* O item2 vai começar com 100px e vai tentar ter este tamanho enquanto é dimensionado*/
+                               /* com isso ele bobreescreve da regra do grow de dimensionamento proporcional*/
+        /*}
+
+        #item2 {
+            flex-shrink:2;*/ /* contrario do flex-grow . Este elemento vai diminuir 2 vezes mais que os outros*/
+            /*order:1;
+        }
+        #item3{
+            order:2;
+        }*/
+
+
+
+    </style>
+</head>
+<body>
+    <!--<div class="container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+    </div>-->
+
+    <div class="container">
+        <div class="box" id="item1">
+            1 asdsdasdasad 1 asdsdasdasad 1 asdsdasdasad 1 asdsdasdasad 1 asdsdasdasad  1 asdsdasdasad
+
+
+        </div>
+        <div class="box item" id="item2">2 asdsdasdasad</div>
+        <div class="box" id="item3">3 asdsdasdasad</div>
+    </div>
+</body>
+</html>
